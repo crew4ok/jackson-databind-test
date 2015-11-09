@@ -9,7 +9,7 @@ import jackson.PayloadTypeIdResolver;
 public class MessageWrapper<T> {
     private final MessageType messageType;
 
-    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "messageType")
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "messageType", visible = true)
     @JsonTypeIdResolver(PayloadTypeIdResolver.class)
     private final T payload;
 

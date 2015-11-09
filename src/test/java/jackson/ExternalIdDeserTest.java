@@ -1,5 +1,6 @@
 package jackson;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.ChatMessage;
 import model.MessageType;
@@ -18,7 +19,7 @@ public class ExternalIdDeserTest {
         MessageWrapper<ChatMessage> messageWrapper = new MessageWrapper<>(MessageType.CHAT_MESSAGE, chatMessage);
 
         String json = objectMapper.writeValueAsString(messageWrapper);
-        MessageWrapper actualMessageWrapper = objectMapper.readValue(json, MessageWrapper.class);
+        MessageWrapper actualMessageWrapper = objectMapper.readValue(json, new TypeReference<MessageWrapper<ChatMessage>>() { });
 
         assertNotNull(actualMessageWrapper.getMessageType());
     }
